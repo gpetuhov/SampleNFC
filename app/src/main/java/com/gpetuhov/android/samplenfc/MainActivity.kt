@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         nfcAdapter.disableForegroundDispatch(this)
     }
 
+    // onNewIntent is NOT called in newly created activity!
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         val tag: Tag? = intent?.getParcelableExtra(NfcAdapter.EXTRA_TAG)
