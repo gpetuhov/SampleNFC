@@ -24,14 +24,17 @@
             </intent-filter>
         </activity>
 
-<!--        <activity android:name=".NfcActivity">-->
-<!--            <intent-filter>-->
-<!--&lt;!&ndash;                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                <category android:name="android.intent.category.DEFAULT"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                <action android:name="android.nfc.action.TECH_DISCOVERED"/>&ndash;&gt;-->
-<!--                <action android:name="android.nfc.action.TAG_DISCOVERED"/>-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+        <!-- NfcActivity is started by Android,
+             when NFC with the technology from nfc_tech_filter is detected -->
+        <!-- If there are several applications installed,
+             which also have the same intent filter, user will be able to choose, which one to start -->
+        <activity android:name=".NfcActivity">
+            <intent-filter>
+                <action android:name="android.nfc.action.TECH_DISCOVERED"/>
+            </intent-filter>
+            <meta-data android:name="android.nfc.action.TECH_DISCOVERED"
+                       android:resource="@xml/nfc_tech_filter"/>
+        </activity>
 
     </application>
 
